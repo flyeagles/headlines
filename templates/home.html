@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>Headlines</title>
+</head>
+<body>
+	<h1>Headlines</h1>
+	{% for art in arts %}
+		<b><a href="{{art.link}}">{{art.title}}</a></b> <br />
+		<i>{{art.published}}</i> <br />
+		<p>{{art.summary}}</p>
+		<hr />
+	{% endfor %}
+</body>
+</html>
