@@ -1,14 +1,95 @@
 <html>
 <head>
 	<title>Headlines</title>
+	<style>
+	html {
+	font-family:"helvetica";
+	background:white;
+	}
+
+	body {
+		background: lightgrey;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	#header {
+		background: lightsteelblue;
+	}
+
+	#inner-header {
+		padding-left:10
+	}
+	#main {
+		padding-left:10;
+	}
+
+	input[type="text"], select {
+		color:grey;
+		border: 1px solid lightsteelblue;
+		height: 30px;
+		line-height: 15px;
+		margin: 2px 6px 16px 0px;
+	}
+	input[type="submit"] {
+		padding: 5px 10px 5px 10px
+		color: red;
+		background: lightsteelblue;
+		border: none;
+		box-shadow: 1px 1px 1px #4c6e91;
+	}
+	input[type="submit"]:hover {
+		background:steelblue;
+	}
+
+
+	</style>
+	
 </head>
 <body>
-	<h1>Headlines</h1>
+	<div id="header">
+		<div id="inner-header">
+		<h1>Headlines</h1>
+		<p>headlines, currency, weather.</p>
+		</div>
+	<hr />
+	</div>
+
+	<div id="main">
+
+	<h2>Current weather</h2>
+	<p>City: <b>{{weather.city}}, {{weather.country}}</b></p>
+	<p>{{weather.description}} | {{weather.temperature}} &#8451;</p>
+
+	<form>
+	<input type="text" name="city" placeholder="weather search">
+	<input type="submit" value="查看">
+	</form>
+
+	<form>
+	from: <select name="currency_from">
+		<option value="USD" >US Dollar</option>	
+		<option value="GBP" {{ 'selected="selected"' if currency_from=="GBP" }} >GB Pound</option>	
+		<option value="EUR">EUR</option>	
+		<option value="ZAR">ZAR</option>	
+		</select>
+
+	to: <select name="currency_to">
+		<option value="USD">USD</option>	
+		<option value="GBP">GBP</option>	
+		<option value="EUR">EUR</option>	
+		<option value="ZAR">ZAR</option>	
+		</select>
+
+	<input type="submit" value="Submit">
+	</form>		
+
 
 	<form>
 		<input type="text" name ="publication" placeholder = "search" />
 		<input type="submit" value="Submit" />
 	</form>
+	<h2>Headlines</h2>
 
 	{% for art in arts %}
 		<b><a href="{{art.link}}">{{art.title}}</a></b> <br />
@@ -16,5 +97,7 @@
 		<p>{{art.summary}}</p>
 		<hr />
 	{% endfor %}
+
+	</div>
 </body>
 </html>
