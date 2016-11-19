@@ -4,6 +4,12 @@
 </head>
 <body>
 	<h1>Headlines</h1>
+
+	<form>
+		<input type="text" name ="publication" placeholder = "search" />
+		<input type="submit" value="Submit" />
+	</form>
+
 	{% for art in arts %}
 		<b><a href="{{art.link}}">{{art.title}}</a></b> <br />
 		<i>{{art.published}}</i> <br />
